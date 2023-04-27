@@ -34,8 +34,6 @@ class ListActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
-        // Показываем фрагмент с погодой по умолчанию
         showFragment(WeatherFragment())
     }
 
