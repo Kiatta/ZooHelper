@@ -1,5 +1,6 @@
 package com.example.zoohelper.fragment
 
+import VpAdapter
 import android.Manifest
 import android.app.Instrumentation.ActivityResult
 import android.content.pm.LauncherActivityInfo
@@ -12,11 +13,25 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.FragmentActivity
 import com.example.zoohelper.R
+import com.example.zoohelper.databinding.FragmentListBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class WeatherFragment : Fragment() {
 
     private lateinit var pLauncher: ActivityResultLauncher<String>
+    private lateinit var binding: FragmentListBinding
+
+
+    private val fList = listOf(
+
+        ListFragment.newInstance()
+    )
+    private val tList = listOf(
+        "Hours",
+        "Days"
+    )
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,6 +51,7 @@ class WeatherFragment : Fragment() {
             pLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         }
     }
+
     private fun permissionListener() {
         pLauncher = registerForActivityResult(
             ActivityResultContracts.RequestPermission()) {

@@ -11,17 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/Back" />
+        app:srcCompat="@drawable/ss" />
 
+    <!-- Навигационный бар -->
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="?attr/actionBarSize" >
+        android:layout_marginBottom="?attr/actionBarSize">
 
     </FrameLayout>
 
-    <!-- Навигационный бар -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"

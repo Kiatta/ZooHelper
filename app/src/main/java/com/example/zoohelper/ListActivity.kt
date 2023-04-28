@@ -1,20 +1,18 @@
 package com.example.zoohelper
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import com.example.zoohelper.fragment.AnimalsFragment
-import com.example.zoohelper.fragment.ListFragment
 import com.example.zoohelper.fragment.WeatherFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class ListActivity : AppCompatActivity() {
 
     private lateinit var container: FrameLayout
     private lateinit var navigation: BottomNavigationView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +34,8 @@ class ListActivity : AppCompatActivity() {
         }
         showFragment(WeatherFragment())
     }
+
+
 
     private fun showFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
