@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, com.example.zoohelper.ListActivity::class.java)
             intent.putExtra("profession", selectedProfession)
             startActivity(intent)
-            finish()
+
 
         }
     }

@@ -1,5 +1,6 @@
 package com.example.zoohelper
 
+
 data class Animals(
     val id: Int,
     val name: String,
@@ -7,4 +8,5 @@ data class Animals(
     val age: Int,
     val habitat: String,
     val status: Boolean,
-    val photoUrl: String)
+    val photoUrl: String
+    )

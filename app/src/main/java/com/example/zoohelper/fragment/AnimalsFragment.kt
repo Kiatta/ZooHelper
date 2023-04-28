@@ -39,11 +39,11 @@ class AnimalsFragment : Fragment() {
             Animals(
                 1,"Obezyana",
                 25,5,
-                "", false, ""),
+                "", false, "https://mykaleidoscope.ru/x/uploads/posts/2022-09/1663131939_18-mykaleidoscope-ru-p-zloi-yenot-vkontakte-18.jpg"),
             Animals(
                 2,"Tigr",
                 35,2,
-                "", false, ""),
+                "", false, "https://mykaleidoscope.ru/x/uploads/posts/2022-09/1663131939_18-mykaleidoscope-ru-p-zloi-yenot-vkontakte-18.jpg"),
             Animals(
                 3,"Lev",
                 15,3,

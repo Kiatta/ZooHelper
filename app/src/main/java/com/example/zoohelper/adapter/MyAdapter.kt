@@ -3,6 +3,7 @@ package com.example.zoohelper.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.zoohelper.Animals
 import com.example.zoohelper.R
 import com.example.zoohelper.databinding.ListItemBinding
+import com.squareup.picasso.Picasso
 
 class MyAdapter : ListAdapter<Animals, MyAdapter.Holder>(Comparator()) {
 
@@ -21,6 +23,7 @@ class MyAdapter : ListAdapter<Animals, MyAdapter.Holder>(Comparator()) {
             textViewWeight.text = item.weight.toString()
             textViewAge.text = item.age.toString()
             textViewHabitat.text = item.habitat
+
         }
     }
     class Comparator : DiffUtil.ItemCallback<Animals>(){
