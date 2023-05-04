@@ -11,6 +11,7 @@ import android.widget.RadioButton
 
 class MainActivity : AppCompatActivity() {
     private lateinit var db: MainDb
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,11 +30,13 @@ class MainActivity : AppCompatActivity() {
             }
 
             // Переходим на другую активность, передавая выбранный ответ
-            val intent = Intent(this, com.example.zoohelper.ListActivity::class.java)
-            intent.putExtra("profession", selectedProfession)
+            val profession = selectedProfession
+            val intent = Intent(this, ListActivity::class.java)
+            intent.putExtra("profession", profession)
             startActivity(intent)
+            val animalViewModel = AnimalViewModel(applicationContext)
             db = MainDb.getDB(applicationContext)
-            finish()
+
 
         }
     }

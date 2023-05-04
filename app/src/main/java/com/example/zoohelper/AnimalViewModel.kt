@@ -6,19 +6,25 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class AnimalViewModel(context: Context): ViewModel() {
+ class AnimalViewModel(context: Context): ViewModel() {
 
-    private var _myLiveData: LiveData<List<Animal>>
+    private  var _myLiveData: LiveData<List<Animal>>
     private var db = MainDb.getDB(context)
+
     init {
+
         _myLiveData = db.getDao().getAllAnimal()
+
+
     }
     val myLiveData: LiveData<List<Animal>>
     get() = _myLiveData
-    fun updateInfo(id: Int) {
+
+     fun deleteAnimal(id: Int) {
         viewModelScope.launch {
             db.getDao().deleteAnimal(id)
         }
     }
+
 
 }

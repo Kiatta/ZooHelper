@@ -9,7 +9,7 @@ import com.example.zoohelper.fragment.WeatherFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class ListActivity : AppCompatActivity() {
+class ListActivity() : AppCompatActivity() {
 
     private lateinit var container: FrameLayout
     private lateinit var navigation: BottomNavigationView
@@ -35,7 +35,7 @@ class ListActivity : AppCompatActivity() {
         }
 
 
-        showFragment(WeatherFragment())
+        showFragment(AnimalsFragment())
     }
 
 
