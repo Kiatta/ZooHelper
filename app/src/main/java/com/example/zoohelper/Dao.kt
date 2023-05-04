@@ -1,17 +1,19 @@
 package com.example.zoohelper
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.room.*
 import androidx.room.Dao
-import kotlinx.coroutines.flow.Flow
+import androidx.room.Insert
+import androidx.room.Query
 
 @Dao
 interface Dao {
     @Insert
-    suspend fun insertAnimals(trans: Animal)
+    fun insertAnimal(animal: Animal)
     @Query("SELECT * FROM Animal")
-    fun getAllAnimals(): LiveData<List<Animal>>
+    fun getAllAnimal(): LiveData<List<Animal>>
     @Query("DELETE FROM Animal WHERE id = :animal_id")
     suspend fun deleteAnimal(animal_id: Int)
-
+    @Query("SELECT * FROM Animal WHERE status = 0")
+    fun getBol(): LiveData<List<Animal>>
+    @Query("SELECT * FROM Animal WHERE status = 1")
+    fun getZdor(): LiveData<List<Animal>>
 }

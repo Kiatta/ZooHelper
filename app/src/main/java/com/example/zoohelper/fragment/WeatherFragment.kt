@@ -29,14 +29,6 @@ import org.json.JSONObject
 const val API_KEY ="d9f5b46874914d9886125512232804"
 class WeatherFragment : Fragment() {
     private lateinit var fLocationClient: FusedLocationProviderClient
-    private val fList = listOf(
-        AnimalsFragment.newInstance(),
-        ListFragment.newInstance()
-    )
-    private val tList = listOf(
-        "Hours",
-        "Days"
-    )
     private lateinit var pLauncher: ActivityResultLauncher<String>
     private lateinit var binding: FragmentWeatherBinding
 
@@ -58,13 +50,14 @@ class WeatherFragment : Fragment() {
         checkPermisson()
         init()
         updateCurrentCard()
-        getLocation()
+
 
 
     }
     private fun init() = with (binding){
         fLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
+        getLocation()
     }
     private fun getLocation(){
         val ct = CancellationTokenSource()
@@ -120,7 +113,7 @@ class WeatherFragment : Fragment() {
                 "&days=" +
                 "3" +
                 "&aqi=no&alerts=no"
-        val queue = Volley.newRequestQueue(context)
+        val queue = Volley.newRequestQueue(requireContext())
         val request = StringRequest(
             Request.Method.GET,
             url,

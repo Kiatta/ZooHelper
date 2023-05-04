@@ -15,6 +15,7 @@ class ListActivity : AppCompatActivity() {
     private lateinit var navigation: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
         container = findViewById(R.id.container)
@@ -32,6 +33,8 @@ class ListActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
+
         showFragment(WeatherFragment())
     }
 

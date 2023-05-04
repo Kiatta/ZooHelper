@@ -17,7 +17,7 @@ data class Animal(
     @ColumnInfo(name = "habitat")
     var habitat: String,
     @ColumnInfo(name = "status")
-    var status: String,
+    var status: Boolean,
     @ColumnInfo(name = "photoUrl")
     var photoUrl: String
 
