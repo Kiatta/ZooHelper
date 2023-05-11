@@ -26,6 +26,11 @@ import kotlinx.coroutines.launch
             db.getDao().deleteAnimal(id)
         }
     }
+     fun request() {
+         viewModelScope.launch {
+             db.getDao().getAllAnimal()
+         }
+     }
      fun switch(status:Boolean,id: Int) {
          viewModelScope.launch(Dispatchers.IO) {
              db.getDao().switchAnimal(status,id)

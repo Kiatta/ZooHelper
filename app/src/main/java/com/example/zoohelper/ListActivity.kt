@@ -7,9 +7,11 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.zoohelper.adapter.MyAdapter
+import com.example.zoohelper.fragment.AddFragment
 import com.example.zoohelper.fragment.AnimalsFragment
 import com.example.zoohelper.fragment.WeatherFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,6 +22,7 @@ class ListActivity() : AppCompatActivity() {
     private lateinit var container: FrameLayout
     private lateinit var navigation: BottomNavigationView
     lateinit var viewmodel: AnimalViewModel
+    private lateinit var db: MainDb
 
     lateinit var adapter: MyAdapter
 
@@ -45,6 +48,11 @@ class ListActivity() : AppCompatActivity() {
                 }
                 R.id.navigation_animals -> {
                     showFragment(AnimalsFragment())
+
+                    true
+                }
+                R.id.nav_add -> {
+                    showFragment(AddFragment())
                     true
                 }
                 else -> false

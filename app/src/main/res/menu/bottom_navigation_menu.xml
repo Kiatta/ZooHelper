@@ -8,4 +8,8 @@
         android:id="@+id/navigation_animals"
         android:icon="@drawable/ic_animals"
         android:title="Список животных" />
+    <item
+        android:id="@+id/nav_add"
+        android:icon="@drawable/plus"
+        android:title="Добавить животное" />
 </menu>
