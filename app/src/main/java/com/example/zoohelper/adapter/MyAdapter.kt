@@ -27,6 +27,16 @@ class MyAdapter(var animal: List<Animal>, var viewModel: AnimalViewModel): Recyc
             }
         }
     }
+    fun onSwitch(itemView: View) {
+        itemView.findViewById<Button>(R.id.buttonShare).setOnClickListener {
+            val id = itemView.findViewById<TextView>(R.id.textViewID).text.toString().toInt()
+            val status = !(itemView.findViewById<TextView>(R.id.textStatus).text.toString().toBoolean())
+
+            CoroutineScope(Dispatchers.IO).launch {
+                viewModel.switch(status,id)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
@@ -49,9 +59,11 @@ class MyAdapter(var animal: List<Animal>, var viewModel: AnimalViewModel): Recyc
             textViewWeight.text = item.weight.toString()
             textViewAge.text = item.age.toString()
             textViewHabitat.text = item.habitat
+            textStatus.text = item.status.toString()
             Picasso.get().load(item.photoUrl).into(imageViewAnimal)
             try {
                 onDeleteButtonClick(itemView)
+                onSwitch(itemView)
             }catch (e: android.database.SQLException)
             {
 

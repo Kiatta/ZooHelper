@@ -7,14 +7,14 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
- class AnimalViewModel(context: Context): ViewModel() {
+ class AnimalViewModel(context: Context,profession: Boolean): ViewModel() {
 
     private  var _myLiveData: LiveData<List<Animal>>
     private var db :MainDb
 
     init {
         db = MainDb.getDB(context)
-        _myLiveData = db.getDao().getAllAnimal()
+        _myLiveData = db.getDao().getBol(profession)
 
 
     }
@@ -26,9 +26,9 @@ import kotlinx.coroutines.launch
             db.getDao().deleteAnimal(id)
         }
     }
-     fun insertInfo(animal: Animal) {
+     fun switch(status:Boolean,id: Int) {
          viewModelScope.launch(Dispatchers.IO) {
-             db.getDao().insertAnimal(animal)
+             db.getDao().switchAnimal(status,id)
          }
      }
 

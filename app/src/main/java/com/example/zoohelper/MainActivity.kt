@@ -11,22 +11,25 @@ import com.example.zoohelper.adapter.MyAdapter
 
 class MainActivity : AppCompatActivity() {
     private lateinit var db: MainDb
+    private lateinit var animalViewModel: AnimalViewModel
+    private lateinit var rbVeterinarian: RadioButton
+    private lateinit var rbKeeper:RadioButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val btnSubmit = findViewById<Button>(R.id.btnSubmit)
-        val rbVeterinarian = findViewById<RadioButton>(R.id.rbVeterinarian)
-        val rbKeeper = findViewById<RadioButton>(R.id.rbKeeper)
-
+        rbVeterinarian = findViewById(R.id.rbVeterinarian)
+        rbKeeper = findViewById(R.id.rbKeeper)
+        animalViewModel = AnimalViewModel(applicationContext, getSelectedProfession())
 
         // Обработчик нажатия на кнопку
         btnSubmit.setOnClickListener {
             // Получаем выбранный ответ
             val selectedProfession = when {
-                rbVeterinarian.isChecked -> "ветеринар"
-                rbKeeper.isChecked -> "кипер"
-                else -> ""
+                rbVeterinarian.isChecked -> true
+                rbKeeper.isChecked -> false
+                else -> false
             }
 
             // Переходим на другую активность, передавая выбранный ответ
@@ -34,10 +37,18 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ListActivity::class.java)
             intent.putExtra("profession", profession)
             startActivity(intent)
-            val animalViewModel = AnimalViewModel(applicationContext)
+            val animalViewModel = AnimalViewModel(applicationContext,profession)
             db = MainDb.getDB(applicationContext)
 
 
         }
     }
+    private fun getSelectedProfession(): Boolean {
+        return when {
+            rbVeterinarian.isChecked -> true
+            rbKeeper.isChecked -> false
+            else -> false
+        }
+    }
 }
+

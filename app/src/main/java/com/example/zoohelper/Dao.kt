@@ -12,8 +12,10 @@ interface Dao {
     fun getAllAnimal(): LiveData<List<Animal>>
     @Query("DELETE FROM Animal WHERE id = :animal_id")
     suspend fun deleteAnimal(animal_id: Int)
-    @Query("SELECT * FROM Animal WHERE status = 0")
-    fun getBol(): LiveData<List<Animal>>
+    @Query("UPDATE Animal SET status = :status WHERE id = :animal_id")
+    suspend fun switchAnimal(status: Boolean,animal_id: Int)
+    @Query("SELECT * FROM Animal WHERE status = :status")
+    fun getBol(status: Boolean): LiveData<List<Animal>>
     @Query("SELECT * FROM Animal WHERE status = 1")
     fun getZdor(): LiveData<List<Animal>>
 }

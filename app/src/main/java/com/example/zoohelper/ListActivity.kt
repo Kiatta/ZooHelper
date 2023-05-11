@@ -26,10 +26,10 @@ class ListActivity() : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        val profession = intent.getBooleanExtra("profession",false)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
-        viewmodel = AnimalViewModel(applicationContext)
+        viewmodel = AnimalViewModel(applicationContext, profession)
         adapter  = MyAdapter(kotlin.collections.listOf(), viewmodel)
         viewmodel.myLiveData.observe(this){
             adapter.animal = it
