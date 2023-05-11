@@ -33,28 +33,24 @@ class AnimalsFragment: Fragment() {
         val view = inflater.inflate(R.layout.fragment_animals, container, false)
         recyclerView = view.findViewById(R.id.recyclerView)
         return view
+
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         initRcView()
 
     }
     private fun initRcView() {
         db = MainDb.getDB(requireContext())
-        viewModel = AnimalViewModel(requireContext())
-
-        adapter = MyAdapter(listOf())
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = adapter
-        viewModel.myLiveData.observe(viewLifecycleOwner)
-        {
+        recyclerView.adapter = (activity as ListActivity).adapter
 
-            adapter.animal = it
-            adapter.notifyDataSetChanged()
-
-        }
     }
+
 
 
     companion object {

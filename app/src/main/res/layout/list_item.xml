@@ -59,8 +59,8 @@
                 android:textSize="14sp" />
             <Button
                 android:id="@+id/buttonShare"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="@drawable/change"
                 android:contentDescription="Share button" />
 
@@ -90,11 +90,12 @@
 
             <Button
                 android:id="@+id/buttonDelete"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/delete"
-                android:contentDescription="Share button"
-                android:onClick="onDeleteButtonClick" />
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:onClick="onDeleteSelectedClick"
+                android:background="@drawable/delete" />
+
+
 
         </LinearLayout>
 
